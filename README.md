@@ -1,2 +1,2 @@
-# [Free Flutter Template] Location Permissions Loop
+# Location Permissions Loop
 <img src="README/LocationLoop.png" />
