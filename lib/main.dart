@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
     if (permission == PermissionStatus.unknown) {
       if (shownBottomSheet) {
         Navigator.pop(context);
+        shownBottomSheet = false;
       }
       try {
         print(
@@ -68,6 +69,7 @@ class _MyAppState extends State<MyApp> {
     if (permission == PermissionStatus.granted) {
       if (shownBottomSheet) {
         Navigator.pop(context);
+        shownBottomSheet = false;
       }
       setState(() {
         message = 'Granted. Yay!!!';
