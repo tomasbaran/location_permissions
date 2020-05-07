@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String message = 'unknown';
   PermissionStatus permission = PermissionStatus.unknown;
-  bool isOpened = false;
-  bool showBottomSheet = false;
+  bool openedSettings = false;
+  bool shownBottomSheet = false;
 
   checkPermission() async {
     permission = await LocationPermissions().checkPermissionStatus();
@@ -38,8 +38,8 @@ class _MyAppState extends State<MyApp> {
 
     if (permission == PermissionStatus.denied) {
       print('1. permission denied');
-      if (!showBottomSheet) {
-        showBottomSheet = true;
+      if (!shownBottomSheet) {
+        shownBottomSheet = true;
         showModalBottomSheet(
             isDismissible: false,
             enableDrag: false,
@@ -48,7 +48,8 @@ class _MyAppState extends State<MyApp> {
                   height: 500,
                   child: FlatButton(
                     onPressed: () async {
-                      isOpened = await LocationPermissions().openAppSettings();
+                      openedSettings =
+                          await LocationPermissions().openAppSettings();
                       print('isOpened happened');
                       checkPermission();
                     },
@@ -63,7 +64,7 @@ class _MyAppState extends State<MyApp> {
     }
 
     if (permission == PermissionStatus.granted) {
-      if (showBottomSheet) {
+      if (shownBottomSheet) {
         Navigator.pop(context);
       }
       setState(() {
