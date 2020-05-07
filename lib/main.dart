@@ -32,10 +32,9 @@ class _MyAppState extends State<MyApp> {
       } catch (e) {
         print('LocationPermissions().requestPermissions() error: $e');
       }
-
-      //MARK[red]: PermissionStatus.denied
     }
 
+    //MARK[red]: PermissionStatus.denied
     if (permission == PermissionStatus.denied) {
       print('1. permission denied');
       if (!shownBottomSheet) {
@@ -60,9 +59,9 @@ class _MyAppState extends State<MyApp> {
         await Future.delayed(Duration(milliseconds: 100));
         checkPermission();
       }
-      //MARK[green]: PermissionStatus.granted
     }
 
+    //MARK[green]: PermissionStatus.granted
     if (permission == PermissionStatus.granted) {
       if (shownBottomSheet) {
         Navigator.pop(context);
