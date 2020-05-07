@@ -23,6 +23,9 @@ class _MyAppState extends State<MyApp> {
 
     //MARK[blue]: PermissionStatus.unknown
     if (permission == PermissionStatus.unknown) {
+      if (shownBottomSheet) {
+        Navigator.pop(context);
+      }
       try {
         print(
             '1. trying to request permission at (${DateTime.now().minute}:${DateTime.now().second}.${DateTime.now().millisecond})');
